@@ -8,8 +8,8 @@ private:
 	Queue* p;
 
 public:
-	Queue* first(Type);
-	void add(Queue**, Type);
-	Type del(Oueue**);
+	Queue<Type>* first(Type);
+	void add(Queue<Type>**, Type);
+	Type del(Queue<Type>**);
 };
 
