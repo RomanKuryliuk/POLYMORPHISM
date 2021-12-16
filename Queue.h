@@ -15,7 +15,7 @@ public:
 	~Queue();
 
 	void push(T);
-	T pop();	
+	T pop();
 
 	Queue& operator=(const Queue&);
 

@@ -8,11 +8,11 @@ class Student
 {
 private:
 	char* name, * surname;
-	int group, * marks;
+	int group, * marks, number;
 
 public:
 	Student();
-	Student(char*, char*, int, int*);
+	Student(char*, char*, int, int*, int);
 	Student(Student&);
 	~Student();
 
@@ -20,11 +20,13 @@ public:
 	char* get_surname();
 	int get_group();
 	int* get_marks();
+	int get_number();
 
 	Student& set_name(char*);
 	Student& set_surname(char*);
 	Student& set_group(int);
 	Student& set_name(int*);
+	Student& set_number(int);
 
 	int middle_point();
 	void add_mark(int);
