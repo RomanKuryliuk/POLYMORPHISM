@@ -1,3 +1,5 @@
+#include <iostream>
+
 #include "Queue.h"
 
 
@@ -150,4 +152,51 @@ Queue<T>& Queue<T>::operator=(const Queue& obj)
 		cout << e.what() << endl;
 	}
 	return *this; //повернути об'Їкт
+}
+
+
+//вз€ти перший елемент з черги, не вит€гуючи його
+template<typename T>
+T Queue<T>::GetItem()
+{
+	if (count > 0)
+		return p[0];
+	else
+		return 0;
+}
+
+//очистка черги
+template<typename T>
+void Queue<T>::clear()
+{
+	if (count > 0)
+	{
+		delete[] p;
+		count = 0;
+	}
+}
+
+//перев≥рка ≥снуванн€ елемен≥в в черз≥
+template<typename T>
+bool Queue<T>::IsEmpty()
+{
+	return count == 0;
+}
+
+//к-сть елемент≥в в черз≥
+template<typename T>
+int Queue<T>::GetN()
+{
+	return count;
+}
+
+//метож, €кий виводить чергу
+template<typename T>
+void Queue<T>::print(const char* objName)
+{
+	cout << "Object: " << objName << endl;
+	for (int i = 0; i < count; i++)
+		cout << p[i] << "\t";
+	cout << endl;
+	cout << "---------------------" << endl;
 }
