@@ -177,4 +177,38 @@ Student& Student::set_marks(int* _marks, int _number)
 	return *this;
 }
 
+double Student::middle_point()
+{
+	double middle = 0;
+
+	for (int i = 0; i < number; i++) {
+		middle += marks[i];
+	}
+
+	middle /= number;
+
+	return middle;
+}
+
+void Student::add_mark(int _mark)
+{
+	int* _marks = new int[];
+	for (int i = 0; i < number; i++) {
+		_marks[i] = marks[i];
+	}
+	_marks[number] = _mark;
+
+	marks = _marks;
+	number++;
+}
+
+void Student::print()
+{
+	cout << name << " " << surname << ", group: " << group << endl
+		<< marks << ":" << endl;
+	for (int i = 0; i < number; i++) {
+		cout << marks[i] << ", ";
+	}
+}
+
 
