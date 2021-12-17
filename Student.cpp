@@ -92,3 +92,28 @@ Student::~Student()
 		delete[] marks;
 	}
 }
+
+char* Student::get_name()
+{
+	return name;
+}
+
+char* Student::get_surname()
+{
+	return surname;
+}
+
+int Student::get_group()
+{
+	return group;
+}
+
+int* Student::get_marks()
+{
+	return marks;
+}
+
+int Student::get_number()
+{
+	return number;
+}
