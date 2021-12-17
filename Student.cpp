@@ -211,4 +211,54 @@ void Student::print()
 	}
 }
 
+Student& Student::operator=(Student& _student)
+{
+	if (name) {
+		delete[] name;
+	}
+
+	if (surname) {
+		delete[] surname;
+	}
+
+	if (number > 0) {
+		delete[] marks;
+	}
+
+	try {
+		name = new char[];
+		strcpy_s(name, (sizeof _student.name) + 1, _student.name);
+	}
+	catch (bad_alloc e) {
+		cout << e.what() << endl;
+	}
+
+	try {
+		surname = new char[];
+		strcpy_s(surname, (sizeof _student.surname) + 1, _student.surname);
+	}
+	catch (bad_alloc e) {
+		cout << e.what() << endl;
+	}
+
+	group = _student.group;
+
+	number = _student.number;
+
+	marks = new int[];
+	for (int i = 0; i < number; i++) {
+		marks[i] = _student.marks[i];
+	}
+}
+
+bool Student::operator>(Student& _student)
+{
+	return middle_point() > _student.middle_point();
+}
+
+bool Student::operator<(Student& _student)
+{
+	return middle_point() < _student.middle_point();
+}
+
 

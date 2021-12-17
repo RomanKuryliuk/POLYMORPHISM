@@ -34,6 +34,7 @@ public:
 	Student& operator=(Student&);
 	bool operator>(Student&);
 	bool operator<(Student&);
+
 	friend istream operator>>(istream, Student&);
 	friend ostream operator<<(ostream, Student&);
 
