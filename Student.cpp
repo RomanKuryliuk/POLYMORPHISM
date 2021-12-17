@@ -261,4 +261,18 @@ bool Student::operator<(Student& _student)
 	return middle_point() < _student.middle_point();
 }
 
+istream& operator>>(istream& _input, Student& _student)
+{
+	_input >> _student.name >> _student.surname >> _student.group >> _student.number;
+	for (int i = 0; i < _student.number; i++) {
+		_input >> _student.marks[i];
+	}
+	return _input;
+}
 
+ostream& operator<<(ostream& _output, Student& _student)
+{
+	return 	_output << _student.get_name() << " " << _student.get_surname() << ", " 
+		<< _student.get_group() << ", " << _student.middle_point();
+;
+}
