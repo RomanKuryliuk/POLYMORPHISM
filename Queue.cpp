@@ -2,6 +2,7 @@
 
 #include "Queue.h"
 
+using namespace std;
 
 //конструктор за замовчуванн€м
 template<typename T>
@@ -80,7 +81,7 @@ void Queue<T>::push(T item)
 
 //вит€гнути перший елемент з черги
 template<typename T>
-T Queue<T>::pop()
+T& Queue<T>::pop()
 {
 	if (count == 0)
 		return 0;
@@ -157,7 +158,7 @@ Queue<T>& Queue<T>::operator=(const Queue& obj)
 
 //вз€ти перший елемент з черги, не вит€гуючи його
 template<typename T>
-T Queue<T>::GetItem()
+T& Queue<T>::GetItem()
 {
 	if (count > 0)
 		return p[0];

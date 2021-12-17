@@ -1,18 +1,32 @@
 #include <iostream>
 
 #include "Queue.h"
-#include "Queue.cpp"
+#include "Student.h"
 
 using namespace std;
 
-int main() {
-	Queue<int>* pbeg = first(1);
-	Queue<int>* pend = pbeg;
-	for (int i = 2; i < 6; i++) {
-		add(&pend, i);
-	}
-	while (pbeg)
-		cout << del(&pbeg) << " ";
+void main() {
 
-	return 0;
+	Queue<Student> queue1;
+	queue1.print("queue1");
+
+	Student student1;
+	cin >> student1;
+	queue1.push(student1);
+
+	queue1.print("queue1");
+
+	Student student2;
+	cin >> student2;
+	queue1.push(student2);
+
+	queue1.print("queue1");
+
+	Student student3;
+	student3 = queue1.pop();
+	cout << student3;
+
+	queue1.print("queue1");
+	
+
 }
