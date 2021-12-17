@@ -3,7 +3,7 @@
 Student::Student()
 {
 	try {
-		name = new char[];
+		name = new char[(sizeof "noname") + 1];
 		strcpy_s(name, (sizeof "noname") + 1, "noname");
 	}
 	catch (bad_alloc e) {
@@ -11,7 +11,7 @@ Student::Student()
 	}
 
 	try {
-		surname = new char[];
+		surname = new char[(sizeof "nosurname") + 1];
 		strcpy_s(surname, (sizeof "nosurname") + 1, "nosurname");
 	}
 	catch (bad_alloc e) {
@@ -19,7 +19,7 @@ Student::Student()
 	}
 
 	group = 0;
-	marks = new int[];
+	marks = new int[0];
 }
 
 Student::Student(char* _name, char* _surname, int _group, int* _marks, int _number)
