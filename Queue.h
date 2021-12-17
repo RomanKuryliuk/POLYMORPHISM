@@ -1,15 +1,29 @@
 #pragma once
 
-template <class Type>
+#include <new>
+
+template <typename T>
 class Queue
 {
 private:
-	Type n;
-	Queue* p;
+	T* p; //динамічний масив
+	int count; //к-сть елементів в черзі
 
 public:
-	Queue* first(Type);
-	void add(Queue**, Type);
-	Type del(Oueue**);
+	Queue();
+	Queue(const Queue&);
+	~Queue();
+
+	void push(T);
+	T pop();
+
+	Queue& operator=(const Queue&);
+
+	T GetItem();
+	void clear();
+	bool IsEmpty();
+	int GetN();
+	void print(const char*);
 };
+
 
