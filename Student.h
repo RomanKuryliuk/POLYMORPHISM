@@ -25,8 +25,7 @@ public:
 	Student& set_name(char*);
 	Student& set_surname(char*);
 	Student& set_group(int);
-	Student& set_name(int*);
-	Student& set_number(int);
+	Student& set_marks(int*, int);
 
 	int middle_point();
 	void add_mark(int);

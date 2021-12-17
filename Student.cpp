@@ -44,9 +44,11 @@ Student::Student(char* _name, char* _surname, int _group, int* _marks, int _numb
 
 	number = _number;
 
-	marks = new int[];
-	for (int i = 0; i < number; i++) {
-		marks[i] = _marks[i];
+	if (_number > 0) {
+		marks = new int[];
+		for (int i = 0; i < number; i++) {
+			marks[i] = _marks[i];
+		}
 	}
 }
 
@@ -117,3 +119,62 @@ int Student::get_number()
 {
 	return number;
 }
+
+Student& Student::set_name(char* _name)
+{
+	if (name) {
+		delete[] name;
+	}
+
+	try {
+		name = new char[];
+		strcpy_s(name, (sizeof _name) + 1, _name);
+	}
+	catch (bad_alloc e) {
+		cout << e.what() << endl;
+	}
+
+	return *this;
+}
+
+Student& Student::set_surname(char* _surname)
+{
+	if (surname) {
+		delete[] surname;
+	}
+
+	try {
+		surname = new char[];
+		strcpy_s(surname, (sizeof _surname) + 1, _surname);
+	}
+	catch (bad_alloc e) {
+		cout << e.what() << endl;
+	}
+
+	return *this;
+}
+
+Student& Student::set_group(int _group)
+{
+	group = _group;
+
+	return *this;
+}
+
+Student& Student::set_marks(int* _marks, int _number)
+{
+	if (number > 0) {
+		delete[] marks;
+	}
+	
+	if (_number > 0) {
+		marks = new int[];
+		for (int i = 0; i < number; i++) {
+			marks[i] = _marks[i];
+		}
+	}
+
+	return *this;
+}
+
+
