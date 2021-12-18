@@ -19,13 +19,14 @@ Student::Student()
 	}
 
 	group = 0;
+	number = 0;
 	marks = new int[0];
 }
 
 Student::Student(char* _name, char* _surname, int _group, int* _marks, int _number)
 {
 	try {
-		name = new char[];
+		name = new char[(sizeof _name) + 1];
 		strcpy_s(name, (sizeof _name) + 1, _name);
 	}
 	catch (bad_alloc e) {
@@ -33,7 +34,7 @@ Student::Student(char* _name, char* _surname, int _group, int* _marks, int _numb
 	}
 
 	try {
-		surname = new char[];
+		surname = new char[(sizeof _surname) + 1];
 		strcpy_s(surname, (sizeof _surname) + 1, _surname);
 	}
 	catch (bad_alloc e) {
@@ -45,17 +46,20 @@ Student::Student(char* _name, char* _surname, int _group, int* _marks, int _numb
 	number = _number;
 
 	if (_number > 0) {
-		marks = new int[];
+		marks = new int[number];
 		for (int i = 0; i < number; i++) {
 			marks[i] = _marks[i];
 		}
+	}
+	else {
+		marks = new int[0];
 	}
 }
 
 Student::Student(Student& _student)
 {
 	try {
-		name = new char[];
+		name = new char[(sizeof _student.name) + 1];
 		strcpy_s(name, (sizeof _student.name) + 1, _student.name);
 	}
 	catch (bad_alloc e) {
@@ -63,7 +67,7 @@ Student::Student(Student& _student)
 	}
 
 	try {
-		surname = new char[];
+		surname = new char[(sizeof _student.surname) + 1];
 		strcpy_s(surname, (sizeof _student.surname) + 1, _student.surname);
 	}
 	catch (bad_alloc e) {
@@ -74,7 +78,7 @@ Student::Student(Student& _student)
 
 	number = _student.number;
 
-	marks = new int[];
+	marks = new int[number];
 	for (int i = 0; i < number; i++) {
 		marks[i] = _student.marks[i];
 	}
@@ -127,7 +131,7 @@ Student& Student::set_name(char* _name)
 	}
 
 	try {
-		name = new char[];
+		name = new char[(sizeof _name) + 1];
 		strcpy_s(name, (sizeof _name) + 1, _name);
 	}
 	catch (bad_alloc e) {
@@ -144,7 +148,7 @@ Student& Student::set_surname(char* _surname)
 	}
 
 	try {
-		surname = new char[];
+		surname = new char[(sizeof _surname) + 1];
 		strcpy_s(surname, (sizeof _surname) + 1, _surname);
 	}
 	catch (bad_alloc e) {
@@ -168,7 +172,8 @@ Student& Student::set_marks(int* _marks, int _number)
 	}
 	
 	if (_number > 0) {
-		marks = new int[];
+		number = _number;
+		marks = new int[number];
 		for (int i = 0; i < number; i++) {
 			marks[i] = _marks[i];
 		}
@@ -192,7 +197,7 @@ double Student::middle_point()
 
 void Student::add_mark(int _mark)
 {
-	int* _marks = new int[];
+	int* _marks = new int[number+1];
 	for (int i = 0; i < number; i++) {
 		_marks[i] = marks[i];
 	}
@@ -226,7 +231,7 @@ Student& Student::operator=(Student& _student)
 	}
 
 	try {
-		name = new char[];
+		name = new char[(sizeof _student.name) + 1];
 		strcpy_s(name, (sizeof _student.name) + 1, _student.name);
 	}
 	catch (bad_alloc e) {
@@ -234,7 +239,7 @@ Student& Student::operator=(Student& _student)
 	}
 
 	try {
-		surname = new char[];
+		surname = new char[(sizeof _student.surname) + 1];
 		strcpy_s(surname, (sizeof _student.surname) + 1, _student.surname);
 	}
 	catch (bad_alloc e) {
@@ -245,10 +250,12 @@ Student& Student::operator=(Student& _student)
 
 	number = _student.number;
 
-	marks = new int[];
+	marks = new int[number];
 	for (int i = 0; i < number; i++) {
 		marks[i] = _student.marks[i];
 	}
+
+	return *this;
 }
 
 bool Student::operator>(Student& _student)
