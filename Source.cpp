@@ -8,24 +8,27 @@ using namespace std;
 
 int main() {
 
-	Queue<int> queue1;
+	Queue<Student> queue1;
 	queue1.print("queue1");
 
-	int int1;
-	cin >> int1;
-	queue1.push(int1);
-
-	queue1.print("queue1");
-
-	int int2;
-	cin >> int2;
-	queue1.push(int2);
+	Student student1;
+	cin >> student1;
+	cout << "---------------------" << endl;
+	queue1.push(student1);
 
 	queue1.print("queue1");
 
-	int int3;
-	int3 = queue1.pop();
-	cout << int3;
+	Student student2;
+	cin >> student2;
+	cout << "---------------------" << endl;
+	queue1.push(student2);
+
+	queue1.print("queue1");
+
+	Student student3;
+	student3 = queue1.pop();
+	cout << student3;
+	cout << "---------------------" << endl;
 
 	queue1.print("queue1");
 	
@@ -66,6 +69,6 @@ int main() {
 		cout << "NO" << endl;
 
 	cout << "n = " << Q3.GetN() << endl;
-	*/
+*/
 	return 0;
 }

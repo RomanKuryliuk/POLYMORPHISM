@@ -231,16 +231,16 @@ Student& Student::operator=(Student& _student)
 	}
 
 	try {
-		name = new char[(sizeof _student.name) + 1];
-		strcpy_s(name, (sizeof _student.name) + 1, _student.name);
+		name = new char[strlen(_student.name) + 1];
+		strcpy_s(name, strlen(_student.name) + 1, _student.name);
 	}
 	catch (bad_alloc e) {
 		cout << e.what() << endl;
 	}
 
 	try {
-		surname = new char[(sizeof _student.surname) + 1];
-		strcpy_s(surname, (sizeof _student.surname) + 1, _student.surname);
+		surname = new char[strlen(_student.surname) + 1];
+		strcpy_s(surname, strlen(_student.surname) + 1, _student.surname);
 	}
 	catch (bad_alloc e) {
 		cout << e.what() << endl;

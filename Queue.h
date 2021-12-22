@@ -19,7 +19,7 @@ public:
 	}
 
 	//конструктор коп≥юванн€
-	Queue(const Queue& ) {
+	Queue(const Queue& obj) {
 		//скоп≥ювати obj в даний об'Їкт
 		count = obj.count;
 
@@ -46,7 +46,7 @@ public:
 
 
 	//додати елемент в чергу
-	void push(T) {
+	void push(T item) {
 		T* p2; //оголосити додатковий вказ≥вник
 		p2 = p; //перенаправити додатковий вказ≥вник на р
 
@@ -81,13 +81,13 @@ public:
 
 	//вит€гнути перший елемент з черги
 	T& pop() {
-		if (count == 0)
-			return 0;
-
 		//заповнити елемент, €кий вит€гаЇтьс€
 		T item;
-
 		item = p[0];
+
+
+		if (count == 0)
+			return item;	
 
 		//сформувати д≥л€нку пам'€т≥, €ка менша на 1
 		try {
@@ -99,7 +99,7 @@ public:
 			count--; //зменшити к-сть елемент≥в в черз≥
 
 			//p=>p2
-			for (int i = 0; i < count; i++)
+			for (int i = 0; i < count - 1; i++)
 				p2[i] = p[i + 1]; //коп≥юЇтьс€ все, окр≥м першого
 
 			  //зв≥льнити д≥л€нку, на €ку вказуЇ p
@@ -116,7 +116,7 @@ public:
 		{
 			//€кщо пам'€ть не вид≥лилась, то повернути 0
 			cout << e.what() << endl;
-			return 0;
+			return item;
 		}
 	}
 
@@ -124,7 +124,7 @@ public:
 
 	//операторна функц≥€ operator=(),
 	//реал≥зуЇ присвоюванн€ об'Їкт≥в типу Queue
-	Queue& operator=(const Queue&) {
+	Queue& operator=(const Queue& obj) {
 		T* p2; //вказ≥вник на додаткову пам'€ть
 
 		try {
@@ -157,8 +157,6 @@ public:
 	T& GetItem() {
 		if (count > 0)
 			return p[0];
-		else
-			return 0;
 	}
 
 	//очистка черги
@@ -181,10 +179,10 @@ public:
 	}
 
 	//метод, €кий виводить чергу
-	void print(const char*) {
+	void print(const char* objName) {
 		cout << "Object: " << objName << endl;
 		for (int i = 0; i < count; i++)
-			cout << p[i] << "\t";
+			cout << p[i] << endl;
 		cout << endl;
 		cout << "---------------------" << endl;
 	}
