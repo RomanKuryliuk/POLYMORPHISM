@@ -4,6 +4,9 @@
 
 using namespace std;
 
+template <class T>
+T temp;
+
 template <typename T>
 class Queue
 {
@@ -82,12 +85,11 @@ public:
 	//вит€гнути перший елемент з черги
 	T& pop() {
 		//заповнити елемент, €кий вит€гаЇтьс€
-		T item;
-		item = p[0];
+		temp<T> = p[0];
 
 
 		if (count == 0)
-			return item;	
+			return temp<T>;
 
 		//сформувати д≥л€нку пам'€т≥, €ка менша на 1
 		try {
@@ -99,7 +101,7 @@ public:
 			count--; //зменшити к-сть елемент≥в в черз≥
 
 			//p=>p2
-			for (int i = 0; i < count - 1; i++)
+			for (int i = 0; i < count; i++)
 				p2[i] = p[i + 1]; //коп≥юЇтьс€ все, окр≥м першого
 
 			  //зв≥льнити д≥л€нку, на €ку вказуЇ p
@@ -109,14 +111,14 @@ public:
 			//перенаправити p на p2
 			p = p2;
 
-			//повернути item
-			return item;
+			//повернути temp<T>
+			return temp<T>;
 		}
 		catch (bad_alloc e)
 		{
 			//€кщо пам'€ть не вид≥лилась, то повернути 0
 			cout << e.what() << endl;
-			return item;
+			return temp<T>;
 		}
 	}
 

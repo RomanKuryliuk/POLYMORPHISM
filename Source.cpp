@@ -27,10 +27,11 @@ int main() {
 
 	Student student3;
 	student3 = queue1.pop();
-	cout << student3;
+	cout << student3 << endl;
 	cout << "---------------------" << endl;
 
 	queue1.print("queue1");
+	
 	
 
 /*	Queue<int> Q1;
@@ -70,5 +71,7 @@ int main() {
 
 	cout << "n = " << Q3.GetN() << endl;
 */
+
+	cin >> student1;
 	return 0;
 }
